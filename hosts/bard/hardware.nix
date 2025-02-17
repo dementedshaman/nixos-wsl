@@ -11,17 +11,12 @@ delib.host {
 
     imports = [ inputs.nixos-wsl.nixosModules.default ];
 
-    environment.systemPackages = with pkgs; [ git wget nil nixfmt ];
-
     wsl = {
       enable = true;
       defaultUser = "csanthiago";
       wslConf = { network.hostname = "bard"; };
     };
 
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-    programs.nix-ld = { enable = true; };
     # nixos-generate-config --show-hardware-config
     # other generated code here...
   };

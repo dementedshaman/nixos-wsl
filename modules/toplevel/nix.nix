@@ -16,6 +16,6 @@ in
   delib.module {
     name = "nix";
 
-    # nixos.always = shared;
-    # home.always = shared;
+    nixos.always = shared;
+    home.always = shared;
   }
