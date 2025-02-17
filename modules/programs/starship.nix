@@ -32,13 +32,19 @@ delib.module {
 
     settings = {
       format = lib.concatStrings [
+        "[](orange)"
         "$username"
         "$hostname"
-        "$battery"
-        "$nix_shell"
+        "[](bg:yellow fg:orange)"
         "$directory"
+        "[](fg:yellow bg:aqua)"
+        "$nix_shell"
+        "[](fg:aqua bg:blue)"
         "$git_branch"
+        "$git_status"
         "$cmd_duration"
+        "[ ](fg:bg1)"
+        "$line_break"
         "$character"
       ];
 
@@ -49,16 +55,43 @@ delib.module {
         success_symbol = "[❯](bold dimmed green)";
         error_symbol = "[❯](bold dimmed red)";
       };
+      os = {
+        style = "bg:color_orange fg:color_fg0";
+      };
+      os.symbols = {
+        Windows = "󰍲";
+        Ubuntu = "󰕈";
+        SUSE = "";
+        Raspbian = "󰐿";
+        Mint = "󰣭";
+        Macos = "󰀵";
+        Manjaro = "";
+        Linux = "󰌽";
+        Gentoo = "󰣨";
+        Fedora = "󰣛";
+        Alpine = "";
+        Amazon = "";
+        Android = "";
+        Arch = "󰣇";
+        Artix = "󰣇";
+        EndeavourOS = "";
+        CentOS = "";
+        Debian = "󰣚";
+        Redhat = "󱄛";
+        RedHatEnterprise = "󱄛";
+        Pop = "";
+        NixOs = "";
+      };
       username = {
-        style_user = "bold dimmed green";
-        style_root = "bold dimmed red";
-        format = "[$user]($style) at ";
+        style_user = "bg:color_orange fg:fg0";
+        style_root = "bg:orange fg:fg0";
+        format = "[ $user ]($style)";
       };
       directory = {
-        format = "in [$path]($style)[$read_only]($read_only_style) ";
-        style = "bold dimmed green";
-        read_only = "*";
-        read_only_style = "dimmed red";
+        format = "[ $path ]($style)";
+        style = "fg:fg0 bg:yellow";
+        truncation_length = 3;
+        truncation_symbol = ".../";
       };
       git_branch = {
         style = "bold dimmed green";
@@ -74,24 +107,45 @@ delib.module {
         ssh_only = false;
         ssh_symbol = "*";
         format = "[$hostname$ssh_symbol]($style) ";
-        style = "bold dimmed green";
-      };
-      battery = {
-        format = "with [$percentage]($style) ";
-        display = [
-          {
-            threshold = 100;
-            style = "bold dimmed green";
-          }
-          {
-            threshold = 30;
-            style = "bold dimmed red";
-          }
-        ];
+        style = "bg:color_orange fg:fg0";
       };
       nix_shell = {
         style = "bold purple";
         format = "via [$state( ($name))]($style) ";
+      };
+      line_break = {};
+
+      palette = "everforest";
+
+      palettes.everforest = {
+        bg_dim = "#232a2e";
+        bg0 = "#2d353b";
+        bg1 = "#343f44";
+        bg2 = "#3d484d";
+        bg3 = "#475258";
+        bg4 = "#4f585e";
+        bg5 = "#56635f";
+        bg_visual = "#543a48";
+        bg_red = "#514045";
+        bg_green = "#425047";
+        bg_blue = "#3a515d";
+        bg_yellow = "#4d4c43";
+
+        fg = "#d3c6aa";
+        red = "#e67e80";
+
+        orange = "#e69875";
+        yellow = "#dbbc7f";
+        green = "#a7c080";
+        aqua = "#83c092";
+        blue = "#7fbbb3";
+        purple = "#d699b6";
+        grey0 = "#7a8478";
+        grey1 = "#859289";
+        grey2 = "#9da9a0";
+        statusline1 = "#a7c080";
+        statusline2 = "#d3c6aa";
+        statusline3 = "#e67e80";
       };
     };
   };

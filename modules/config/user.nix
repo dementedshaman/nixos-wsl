@@ -1,4 +1,4 @@
-{ delib, ... }:
+{ delib, pkgs, ... }:
 delib.module {
   name = "user";
 
@@ -12,6 +12,7 @@ delib.module {
           isNormalUser = true;
           initialPassword = username;
           extraGroups = [ "wheel" ];
+          shell = pkgs.fish;
         };
       };
     };
