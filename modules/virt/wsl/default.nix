@@ -4,9 +4,9 @@ delib.module {
 
   options = {myconfig, ...} @ args: delib.singleEnableOption myconfig.host.isWsl args;
 
-  nixos.always.imports = [nixos-wsl.nixosModules.default];
+  # nixos.always.imports = [nixos-wsl.nixosModules.default];
 
-  nixos.ifEnabled.wsl = {
-    enable = cfg.enable;
-  };
+  # nixos.ifEnabled.wsl = {
+  #   enable = cfg.enable;
+  # };
 }
