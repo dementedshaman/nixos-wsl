@@ -9,5 +9,7 @@ delib.module {
   # nixos.ifEnabled.wsl = {
   #   enable = cfg.enable;
 
-  home.ifEnabled.home.packages = with pkgs; [git wget nil nixfmt-rfc-style nix-ld];
+  home.ifEnabled.home.packages = with pkgs; [wget nil nixfmt-rfc-style];
+
+  nixos.ifEnabled.programs.nix-ld.enable = true;
 }
