@@ -12,6 +12,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    nixos-wsl = {
+      url = "github:nix-community/NixOS-WSL/main";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -20,15 +24,16 @@
     ...
   } @ inputs: let
     mkConfigurations = isHomeManager:
-      denix.lib.configurations {
+      denix.lib.configurations rec {
         homeManagerNixpkgs = nixpkgs;
-        homeManagerUser = "sjohn";
+        homeManagerUser = "csanthiago";
         inherit isHomeManager;
 
-        paths = [./hosts ./modules ./rices];
+        # paths = [./hosts ./modules ./rices];
+        paths = [./hosts ./modules];
 
         specialArgs = {
-          inherit inputs;
+          inherit inputs isHomeManager homeManagerUser;
         };
       };
   in {
