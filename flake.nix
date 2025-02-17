@@ -29,8 +29,8 @@
         homeManagerUser = "csanthiago";
         inherit isHomeManager;
 
-        # paths = [./hosts ./modules ./rices];
-        paths = [./hosts ./modules];
+        paths = [./hosts ./modules ./rices];
+        # paths = [./hosts ./modules];
 
         specialArgs = {
           inherit inputs isHomeManager homeManagerUser;

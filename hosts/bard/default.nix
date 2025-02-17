@@ -2,8 +2,9 @@
 delib.host {
   name = "bard";
 
-  # rice = "dark";
+  rice = "dark";
   type = "wsl";
 
-  myconfig = {name, ...}: {};
+  
+
 }
