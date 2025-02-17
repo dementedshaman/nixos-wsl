@@ -18,26 +18,21 @@
     };
   };
 
-  outputs = {
-    denix,
-    nixpkgs,
-    ...
-  } @ inputs: let
-    mkConfigurations = isHomeManager:
-      denix.lib.configurations rec {
-        homeManagerNixpkgs = nixpkgs;
-        homeManagerUser = "csanthiago";
-        inherit isHomeManager;
+  outputs = { denix, nixpkgs, ... }@inputs:
+    let
+      mkConfigurations = isHomeManager:
+        denix.lib.configurations rec {
+          homeManagerNixpkgs = nixpkgs;
+          homeManagerUser = "csanthiago";
+          inherit isHomeManager;
 
-        paths = [./hosts ./modules ./rices];
-        # paths = [./hosts ./modules];
+          paths = [ ./hosts ./modules ./rices ];
+          # paths = [./hosts ./modules];
 
-        specialArgs = {
-          inherit inputs isHomeManager homeManagerUser;
+          specialArgs = { inherit inputs isHomeManager homeManagerUser; };
         };
-      };
-  in {
-    nixosConfigurations = mkConfigurations false;
-    homeConfigurations = mkConfigurations true;
-  };
+    in {
+      nixosConfigurations = mkConfigurations false;
+      homeConfigurations = mkConfigurations true;
+    };
 }

@@ -1,6 +1,6 @@
-{delib, ...}:
+{ delib, ... }:
 delib.rice {
   name = "dark";
 
-  myconfig = {myconfig, ...}: {};
+  myconfig = { myconfig, ... }: { };
 }

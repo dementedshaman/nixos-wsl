@@ -1,23 +1,19 @@
-{delib, ...}:
+{ delib, ... }:
 delib.module {
   name = "rices";
 
-  options = with delib; let
-    rice = {
-      options = riceSubmoduleOptions;
+  options = with delib;
+    let rice = { options = riceSubmoduleOptions; };
+    in {
+      rice = riceOption rice;
+      rices = ricesOption rice;
     };
-  in {
-    rice = riceOption rice;
-    rices = ricesOption rice;
+
+  myconfig.always = { myconfig, ... }: {
+    args.shared = { inherit (myconfig) rice rices; };
   };
 
-  myconfig.always = {myconfig, ...}: {
-    args.shared = {
-      inherit (myconfig) rice rices;
-    };
-  };
-
-  home.always = {myconfig, ...}: {
+  home.always = { myconfig, ... }: {
     assertions = delib.riceNamesAssertions myconfig.rices;
   };
 }

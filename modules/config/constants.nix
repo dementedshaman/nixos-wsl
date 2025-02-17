@@ -1,4 +1,4 @@
-{delib, ...}:
+{ delib, ... }:
 delib.module {
   name = "constants";
 
@@ -8,7 +8,5 @@ delib.module {
     useremail = readOnly (strOption "cirios.santhiago@outlook.com");
   };
 
-  myconfig.always = {cfg, ...}: {
-    args.shared.constants = cfg;
-  };
+  myconfig.always = { cfg, ... }: { args.shared.constants = cfg; };
 }
