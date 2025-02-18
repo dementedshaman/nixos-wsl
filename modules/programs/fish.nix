@@ -4,7 +4,7 @@ delib.module {
 
   options = delib.singleEnableOption true;
 
-  nixos.ifEnabled.programs.fish = {
+  home.ifEnabled.programs.fish = {
     enable = true;
   };
 }
