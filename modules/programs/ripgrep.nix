@@ -4,11 +4,11 @@
   ...
 }:
 delib.module {
-  name = "programs.zellij";
+  name = "programs.ripgrep";
 
   options = delib.singleEnableOption true;
 
-  home.ifEnabled.programs.zellij = {
+  home.ifEnabled.programs.ripgrep = {
     enable = true;
   };
 }
