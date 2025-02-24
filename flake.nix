@@ -16,19 +16,16 @@
       url = "github:nix-community/NixOS-WSL/main";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvf = {
-      url = "github:notashelf/nvf";
+    nixvim = {
+      url = "github:nix-community/nixvim/";
       inputs.nixpkgs.follows = "nixpkgs";
+      # inputs.home-manager.follows = "home-manager";
     };
-    # nixvim = {
-    #   url = "github:nix-community/nixvim/nixos-24.11";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
-    stylix.url = "github:danth/stylix";
-
-    # zjstatus = {
-    #   url = "github:dj95/zjstatus";
-    # };
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
   outputs =

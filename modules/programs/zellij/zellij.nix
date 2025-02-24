@@ -14,8 +14,8 @@ delib.module {
       simplified_ui = false;
       default_shell = "fish";
       pane_frames = false;
-      default_layout = "compact";
-      default_mode = "locked";
+      # default_layout = "compact";
+      # default_mode = "locked";
       mouse_mode = false;
     };
     enableFishIntegration = false;
